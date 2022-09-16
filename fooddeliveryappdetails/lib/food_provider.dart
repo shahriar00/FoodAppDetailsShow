@@ -1,0 +1,96 @@
+import 'package:flutter/cupertino.dart';
+
+import 'foodmodel.dart';
+
+class foodprovider extends ChangeNotifier{
+  List<food> fooddata = [
+    food(
+        id:0,
+        name:"Normal Burger",
+        price:200.00,
+        cheeseQuantity:"Extra Cheese",
+        location:"Burger Hunter,Dhaka",
+        rating:9.0,
+        img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YnVyZ2VyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+
+    ),
+    food(
+        id:1,
+        name:"PIZZA",
+        price:400.00,
+        cheeseQuantity:"Extra",
+        location:"PizzaBurg,Dhaka",
+        rating:8.0,
+        img: "https://media.istockphoto.com/photos/cheesy-pepperoni-pizza-picture-id938742222?k=20&m=938742222&s=612x612&w=0&h=X5AlEERlt4h86X7U7vlGz3bDaDDGQl4C3MuU99u2ZwQ="
+
+    ),
+    food(
+        id:2,
+        name:"HAMBURGER",
+        price:700.00,
+        cheeseQuantity:"Extra",
+        location:"BurgerKing,Dhaka",
+        rating:9.0,
+        img: "https://images.unsplash.com/photo-1613277367862-f8ef14db7748?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmlnJTIwYnVyZ2VyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+
+    ),
+    food(
+        id:3,
+        name:"MiniBurger",
+        price:280.00,
+        cheeseQuantity:"Extra",
+        location:"KFC,Dhaka",
+        rating:9.0,
+        img: "data:image/jpeg;base64,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"
+
+    ),
+    food(
+        id:4,
+        name:"PASTA",
+        price:260.00,
+        cheeseQuantity:"Extra Cheese",
+        location:"KFC,Dhaka",
+        rating:9.0,
+        img: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cGFzdGF8ZW58MHx8MHx8&w=1000&q=80"
+
+    ),
+    food(
+        id:5,
+        name:"FRENCEFRY",
+        price:250.00,
+        cheeseQuantity:"No Cheese",
+        location:"KFC,Dhaka",
+        rating:8.5,
+        img: "https://upload.wikimedia.org/wikipedia/commons/8/83/French_Fries.JPG"
+
+    ),
+    food(
+        id:6,
+        name:"FRIED",
+        price:350.00,
+        cheeseQuantity:"No Cheese",
+        location:"KFC,Dhaka",
+        rating:7.0,
+        img: "https://static.toiimg.com/thumb/61589069.cms?width=1200&height=900"
+
+    ),
+    food(
+        id:7,
+        name:"HALIM",
+        price:190.00,
+        cheeseQuantity:"No Cheese",
+        location:"Mama Halim,Dhaka",
+        rating:8.0,
+        img: "https://media-cdn.tripadvisor.com/media/photo-m/1280/14/02/9d/ae/halim.jpg"
+
+    ),
+
+  ];
+
+  food? getdata(int foodid){
+    final data = fooddata.firstWhere((element) => element.id==foodid);
+    return data;
+  }
+
+
+}
